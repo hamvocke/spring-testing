@@ -1,0 +1,39 @@
+pipelines:
+    hello-world:
+        group: example
+        materials:
+            hello-world-git:
+                git: https://github.com/hamvocke/continuous-delivery.git
+        stages:
+            - build-and-test:
+                jobs:
+                    build:
+                        tasks:
+                            - exec:
+                                command: ./gradlew
+                                arguments:
+                                    - build
+
+            - deploy-int:
+                jobs:
+                    deploy:
+                        tasks:
+                            - exec:
+                                command: echo
+                                arguments:
+                                    - "Deploying to Int"
+                    push:
+                        smoke-test:
+                            - exec:
+                                command: echo
+                                arguments:
+                                    - "Running smoke tests"
+
+            - end-to-end-test:
+                jobs:
+                    deploy:
+                        tasks:
+                            - exec:
+                                command: echo
+                                arguments:
+                                    - "Running end to end tests"
