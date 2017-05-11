@@ -3,7 +3,7 @@
   <server artifactsdir="artifacts" agentAutoRegisterKey="a8f35d49-e8f2-424b-9177-d07e666090eb" commandRepositoryLocation="default" serverId="c8c0d35d-2c8a-45d5-9f39-39839836e015" />
   <config-repos>
     <config-repo plugin="yaml.config.plugin">
-      <git url="https://git.thoughtworks.net/Otto-IT/demo-service.git" />
+      <git url="git@git.thoughtworks.net:Otto-IT/demo-service.git" />
     </config-repo>
   </config-repos>
   <agents>

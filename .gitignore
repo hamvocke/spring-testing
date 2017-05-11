@@ -24,3 +24,5 @@ dist/
 nbdist/
 .nb-gradle/
 out/
+
+gocd/server/ssh/id*

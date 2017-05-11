@@ -8,6 +8,7 @@ services:
     volumes:
       - ./server/plugins/external:/godata/plugins/external
       - ./server/config/cruise-config.xml:/godata/config/cruise-config.xml
+      - ./server/ssh:/var/go/.ssh
 
   goagent-java:
     build: 
