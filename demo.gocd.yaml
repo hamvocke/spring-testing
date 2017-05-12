@@ -3,7 +3,7 @@ pipelines:
         group: example
         materials:
             hello-world-git:
-                git: https://github.com/hamvocke/continuous-delivery.git
+                git: https://github.com/hamvocke/spring-testing.git
         stages:
             - build-and-test:
                 jobs:
@@ -22,8 +22,8 @@ pipelines:
                                 command: echo
                                 arguments:
                                     - "Deploying to Int"
-                    push:
-                        smoke-test:
+                    smoke-test:
+                        tasks:
                             - exec:
                                 command: echo
                                 arguments:
