@@ -20,12 +20,12 @@ public class PersonRepositoryIntegrationTest {
 
     @Test
     public void shouldSaveAndFetchPerson() throws Exception {
-        Person ham = new Person("Ham", "Vocke");
-        subject.save(ham);
+        Person peter = new Person("Peter", "Pan");
+        subject.save(peter);
 
-        Optional<Person> maybeHam = subject.findByLastName("Vocke");
+        Optional<Person> maybePeter = subject.findByLastName("Pan");
 
-        assertThat(maybeHam.isPresent(), is(true));
-        assertThat(maybeHam.get().firstName, is("Ham"));
+        assertThat(maybePeter.isPresent(), is(true));
+        assertThat(maybePeter.get().firstName, is("Peter"));
     }
 }

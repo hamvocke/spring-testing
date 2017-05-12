@@ -32,13 +32,13 @@ public class HelloWorldAcceptanceTest {
 
     @Test
     public void shouldReturnGreeting() throws Exception {
-        Person ham = new Person("Ham", "Vocke");
-        personRepository.save(ham);
+        Person peter = new Person("Peter", "Pan");
+        personRepository.save(peter);
 
         when()
-                .get(String.format("http://localhost:%s/hello/Vocke", port))
+                .get(String.format("http://localhost:%s/hello/Pan", port))
         .then()
                 .statusCode(is(200))
-                .body(containsString("Hello Ham Vocke!"));
+                .body(containsString("Hello Peter Pan!"));
     }
 }

@@ -32,10 +32,10 @@ public class HelloWorldControllerComponentTest {
 
     @Test
     public void shouldReturnFullName() throws Exception {
-        Person ham = new Person("Ham", "Vocke");
-        given(personRepository.findByLastName("Vocke")).willReturn(Optional.of(ham));
+        Person peter = new Person("Peter", "Pan");
+        given(personRepository.findByLastName("Pan")).willReturn(Optional.of(peter));
 
-        mockMvc.perform(get("/hello/Vocke"))
-                .andExpect(content().string("Hello Ham Vocke!"));
+        mockMvc.perform(get("/hello/Pan"))
+                .andExpect(content().string("Hello Peter Pan!"));
     }
 }

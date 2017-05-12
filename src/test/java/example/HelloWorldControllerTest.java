@@ -32,21 +32,21 @@ public class HelloWorldControllerTest {
 
     @Test
     public void shouldReturnFullNameOfAPerson() throws Exception {
-        Person ham = new Person("Ham", "Vocke");
-        given(personRepository.findByLastName("Vocke")).willReturn(Optional.of(ham));
+        Person peter = new Person("Peter", "Pan");
+        given(personRepository.findByLastName("Pan")).willReturn(Optional.of(peter));
 
-        String greeting = subject.hello("Vocke");
+        String greeting = subject.hello("Pan");
 
-        assertThat(greeting, is("Hello Ham Vocke!"));
+        assertThat(greeting, is("Hello Peter Pan!"));
     }
 
     @Test
     public void shouldTellIfPersonIsUnknown() throws Exception {
         given(personRepository.findByLastName(anyString())).willReturn(Optional.empty());
 
-        String greeting = subject.hello("Vocke");
+        String greeting = subject.hello("Pan");
 
-        assertThat(greeting, is("Who is this 'Vocke' you're talking about?"));
+        assertThat(greeting, is("Who is this 'Pan' you're talking about?"));
     }
 
 }
