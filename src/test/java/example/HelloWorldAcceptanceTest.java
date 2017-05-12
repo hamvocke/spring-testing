@@ -2,6 +2,7 @@ package example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,6 +15,9 @@ import static org.hamcrest.core.Is.is;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HelloWorldAcceptanceTest {
 
+    @Autowired
+    PersonRepository personRepository;
+
     @LocalServerPort
     int port;
 
@@ -24,5 +28,17 @@ public class HelloWorldAcceptanceTest {
         .then()
                 .statusCode(is(200))
                 .body(containsString("Hello World!"));
+    }
+
+    @Test
+    public void shouldReturnGreeting() throws Exception {
+        Person ham = new Person("Ham", "Vocke");
+        personRepository.save(ham);
+
+        when()
+                .get(String.format("http://localhost:%s/hello/Vocke", port))
+        .then()
+                .statusCode(is(200))
+                .body(containsString("Hello Ham Vocke!"));
     }
 }
