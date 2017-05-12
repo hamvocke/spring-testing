@@ -1,5 +1,6 @@
-package de.otto;
+package example;
 
+import example.HelloWorldController;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
