@@ -2,6 +2,7 @@ package example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -21,7 +22,8 @@ public class HelloWorldController {
         return "Hello World!";
     }
 
-    public String hello(final String lastName) {
+    @GetMapping("/hello/{lastName}")
+    public String hello(@PathVariable final String lastName) {
         Optional<Person> foundPerson = personRepository.findByLastName(lastName);
 
         return foundPerson
