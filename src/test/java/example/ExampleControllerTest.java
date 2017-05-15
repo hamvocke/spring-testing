@@ -54,8 +54,10 @@ public class ExampleControllerTest {
 
     @Test
     public void shouldCallWeatherClient() throws Exception {
-        subject.yesterdaysWeather();
+        given(weatherClient.yesterdaysWeather()).willReturn("Hamburg, 8°C raining");
 
-        verify(weatherClient).yesterdaysWeather();
+        String weather = subject.yesterdaysWeather();
+
+        assertThat(weather, is("Hamburg, 8°C raining"));
     }
 }
