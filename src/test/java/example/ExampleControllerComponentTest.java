@@ -13,10 +13,11 @@ import java.util.Optional;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
-public class HelloWorldControllerComponentTest {
+@WebMvcTest(controllers = ExampleController.class)
+public class ExampleControllerComponentTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -37,5 +38,11 @@ public class HelloWorldControllerComponentTest {
 
         mockMvc.perform(get("/hello/Pan"))
                 .andExpect(content().string("Hello Peter Pan!"));
+    }
+
+    @Test
+    public void shouldReturnYesterdaysWeather() throws Exception {
+        mockMvc.perform(get("/yesterdaysWeather"))
+                .andExpect(status().is2xxSuccessful());
     }
 }

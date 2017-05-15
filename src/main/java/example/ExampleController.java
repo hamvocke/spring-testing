@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-public class HelloWorldController {
+public class ExampleController {
 
     private final PersonRepository personRepository;
 
     @Autowired
-    public HelloWorldController(final PersonRepository personRepository) {
+    public ExampleController(final PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
@@ -29,5 +29,10 @@ public class HelloWorldController {
         return foundPerson
                 .map(person -> String.format("Hello %s %s!", person.firstName, person.lastName))
                 .orElse(String.format("Who is this '%s' you're talking about?", lastName));
+    }
+
+    @GetMapping("/yesterdaysWeather")
+    public void yesterdaysWeather() {
+        return;
     }
 }

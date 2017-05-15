@@ -2,7 +2,6 @@ package example;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 
 import java.util.Optional;
@@ -12,9 +11,9 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class HelloWorldControllerTest {
+public class ExampleControllerTest {
 
-    private HelloWorldController subject;
+    private ExampleController subject;
 
     @Mock
     private PersonRepository personRepository;
@@ -22,7 +21,7 @@ public class HelloWorldControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        subject = new HelloWorldController(personRepository);
+        subject = new ExampleController(personRepository);
     }
 
     @Test
@@ -48,5 +47,4 @@ public class HelloWorldControllerTest {
 
         assertThat(greeting, is("Who is this 'Pan' you're talking about?"));
     }
-
 }
