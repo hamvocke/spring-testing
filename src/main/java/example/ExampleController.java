@@ -11,10 +11,12 @@ import java.util.Optional;
 public class ExampleController {
 
     private final PersonRepository personRepository;
+    private final WeatherClient weatherClient;
 
     @Autowired
-    public ExampleController(final PersonRepository personRepository) {
+    public ExampleController(final PersonRepository personRepository, final WeatherClient weatherClient) {
         this.personRepository = personRepository;
+        this.weatherClient = weatherClient;
     }
 
     @GetMapping("/hello")
@@ -32,7 +34,7 @@ public class ExampleController {
     }
 
     @GetMapping("/yesterdaysWeather")
-    public void yesterdaysWeather() {
-        return;
+    public String yesterdaysWeather() {
+        return weatherClient.yesterdaysWeather();
     }
 }

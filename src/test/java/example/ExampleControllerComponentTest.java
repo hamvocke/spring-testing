@@ -25,6 +25,9 @@ public class ExampleControllerComponentTest {
     @MockBean
     private PersonRepository personRepository;
 
+    @MockBean
+    private WeatherClient weatherClient;
+
     @Test
     public void shouldReturnHelloWorld() throws Exception {
         mockMvc.perform(get("/hello"))
@@ -42,7 +45,9 @@ public class ExampleControllerComponentTest {
 
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
+        given(weatherClient.yesterdaysWeather()).willReturn("Hamburg, 8°C raining");
         mockMvc.perform(get("/yesterdaysWeather"))
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().string("Hamburg, 8°C raining"));
     }
 }

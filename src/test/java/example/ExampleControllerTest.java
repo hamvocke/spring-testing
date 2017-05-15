@@ -18,10 +18,14 @@ public class ExampleControllerTest {
     @Mock
     private PersonRepository personRepository;
 
+    @Mock
+    private WeatherClient weatherClient;
+
+
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        subject = new ExampleController(personRepository);
+        subject = new ExampleController(personRepository, weatherClient);
     }
 
     @Test
@@ -46,5 +50,12 @@ public class ExampleControllerTest {
         String greeting = subject.hello("Pan");
 
         assertThat(greeting, is("Who is this 'Pan' you're talking about?"));
+    }
+
+    @Test
+    public void shouldCallWeatherClient() throws Exception {
+        subject.yesterdaysWeather();
+
+        verify(weatherClient).yesterdaysWeather();
     }
 }
