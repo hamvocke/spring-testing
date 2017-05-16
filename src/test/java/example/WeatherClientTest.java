@@ -6,10 +6,9 @@ import org.mockito.Mock;
 import org.springframework.web.client.RestTemplate;
 
 import static example.WeatherResponse.weatherResponse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class WeatherClientTest {
@@ -22,16 +21,17 @@ public class WeatherClientTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        subject = new WeatherClient(restTemplate);
+        subject = new WeatherClient(restTemplate, "http://localhost:8089");
     }
 
     @Test
-    public void shouldCallYahooService() throws Exception {
-        given(restTemplate.getForObject(any(), eq(WeatherResponse.class))).willReturn(weatherResponse().description("Hamburg, 8°C raining").build());
+    public void shouldCallWeatherService() throws Exception {
+        WeatherResponse expectedResponse = weatherResponse().description("Hamburg, 8°C raining").build();
+        given(restTemplate.getForObject("http://localhost:8089", WeatherResponse.class)).willReturn(expectedResponse);
 
-        subject.yesterdaysWeather();
+        WeatherResponse actualResponse = subject.yesterdaysWeather();
 
-        verify(restTemplate).getForObject("yahoo", WeatherResponse.class);
+        assertThat(actualResponse, is(expectedResponse));
     }
 
 }

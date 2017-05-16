@@ -31,4 +31,5 @@ dependencies {
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.rest-assured:rest-assured:3.0.3')
+	testCompile('com.github.tomakehurst:wiremock:2.6.0')
 }
