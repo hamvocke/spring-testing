@@ -1,5 +1,7 @@
-package example;
+package example.weather;
 
+import example.weather.WeatherClient;
+import example.weather.WeatherResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +10,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import static example.WeatherResponse.weatherResponse;
+import static example.weather.WeatherResponse.weatherResponse;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;

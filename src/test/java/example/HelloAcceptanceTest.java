@@ -1,5 +1,7 @@
 package example;
 
+import example.person.Person;
+import example.person.PersonRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

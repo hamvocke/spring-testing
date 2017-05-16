@@ -1,4 +1,4 @@
-package example;
+package example.person;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +26,6 @@ public class PersonRepositoryIntegrationTest {
         Optional<Person> maybePeter = subject.findByLastName("Pan");
 
         assertThat(maybePeter.isPresent(), is(true));
-        assertThat(maybePeter.get().firstName, is("Peter"));
+        assertThat(maybePeter.get().getFirstName(), is("Peter"));
     }
 }

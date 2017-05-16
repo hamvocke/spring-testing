@@ -1,5 +1,8 @@
 package example;
 
+import example.person.Person;
+import example.person.PersonRepository;
+import example.weather.WeatherClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +32,7 @@ public class ExampleController {
         Optional<Person> foundPerson = personRepository.findByLastName(lastName);
 
         return foundPerson
-                .map(person -> String.format("Hello %s %s!", person.firstName, person.lastName))
+                .map(person -> String.format("Hello %s %s!", person.getFirstName(), person.getLastName()))
                 .orElse(String.format("Who is this '%s' you're talking about?", lastName));
     }
 

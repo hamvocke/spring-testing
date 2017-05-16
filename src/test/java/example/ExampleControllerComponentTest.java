@@ -1,5 +1,8 @@
 package example;
 
+import example.person.Person;
+import example.person.PersonRepository;
+import example.weather.WeatherClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static example.WeatherResponse.weatherResponse;
+import static example.weather.WeatherResponse.weatherResponse;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

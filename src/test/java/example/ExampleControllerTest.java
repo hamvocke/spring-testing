@@ -1,12 +1,16 @@
 package example;
 
+import example.person.Person;
+import example.person.PersonRepository;
+import example.weather.WeatherClient;
+import example.weather.WeatherResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static example.WeatherResponse.weatherResponse;
+import static example.weather.WeatherResponse.weatherResponse;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.*;

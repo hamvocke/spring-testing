@@ -1,9 +1,8 @@
-package example;
+package example.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 import static java.util.Collections.singletonList;
@@ -29,15 +28,8 @@ public class WeatherResponse {
                 .collect(Collectors.joining(", "));
     }
 
-    static WeatherResponseBuilder weatherResponse() {
+    public static WeatherResponseBuilder weatherResponse() {
         return new WeatherResponseBuilder();
-    }
-
-    @Override
-    public String toString() {
-        return "WeatherResponse{" +
-                "weather=" + weather +
-                '}';
     }
 
     @Override
@@ -47,16 +39,23 @@ public class WeatherResponse {
 
         WeatherResponse that = (WeatherResponse) o;
 
-        return weather.equals(that.weather);
+        return weather != null ? weather.equals(that.weather) : that.weather == null;
     }
 
     @Override
     public int hashCode() {
-        return weather.hashCode();
+        return weather != null ? weather.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherResponse{" +
+                "weather=" + weather +
+                '}';
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    static class Weather {
+    public static class Weather {
         private String description;
 
         public String getDescription() {
@@ -70,37 +69,38 @@ public class WeatherResponse {
         }
 
         @Override
-        public String toString() {
-            return "Weather{" +
-                    "description='" + description + '\'' +
-                    '}';
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
             Weather weather = (Weather) o;
 
-            return description.equals(weather.description);
+            return description != null ? description.equals(weather.description) : weather.description == null;
         }
 
         @Override
         public int hashCode() {
-            return description.hashCode();
+            return description != null ? description.hashCode() : 0;
         }
+
+        @Override
+        public String toString() {
+            return "Weather{" +
+                    "description='" + description + '\'' +
+                    '}';
+        }
+
     }
 
-    static class WeatherResponseBuilder {
+    public static class WeatherResponseBuilder {
         private String description;
 
-        WeatherResponseBuilder description(String description) {
+        public WeatherResponseBuilder description(String description) {
             this.description = description;
             return this;
         }
 
-        WeatherResponse build() {
+        public WeatherResponse build() {
             return new WeatherResponse(singletonList(new Weather(description)));
         }
     }
