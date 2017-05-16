@@ -19,11 +19,11 @@ import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 @SpringBootTest
 public class WeatherClientIntegrationTest {
 
-    @Rule
-    public WireMockRule wireMockRule = new WireMockRule(8089);
-
     @Autowired
     private WeatherClient subject;
+
+    @Rule
+    public WireMockRule wireMockRule = new WireMockRule(8089);
 
     @Test
     public void shouldCallWeatherService() throws Exception {

@@ -18,10 +18,10 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @TestPropertySource(locations= "classpath:application.properties")
 public class WeatherClientTest {
 
+    private WeatherClient subject;
+
     @Mock
     private RestTemplate restTemplate;
-
-    private WeatherClient subject;
 
     @Before
     public void setUp() throws Exception {
