@@ -1,7 +1,5 @@
 package example.weather;
 
-import example.weather.WeatherClient;
-import example.weather.WeatherResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +15,6 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(SpringRunner.class)
-@TestPropertySource(locations= "classpath:application.properties")
 public class WeatherClientTest {
 
     private WeatherClient subject;
@@ -34,7 +31,7 @@ public class WeatherClientTest {
     @Test
     public void shouldCallWeatherService() throws Exception {
         WeatherResponse expectedResponse = weatherResponse().description("Hamburg, 8°C raining").build();
-        given(restTemplate.getForObject("http://localhost:8089", WeatherResponse.class)).willReturn(expectedResponse);
+        given(restTemplate.getForObject("http://localhost:8089/data/2.5/weather?q=Hamburg,de", WeatherResponse.class)).willReturn(expectedResponse);
 
         WeatherResponse actualResponse = subject.yesterdaysWeather();
 

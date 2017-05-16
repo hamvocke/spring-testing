@@ -30,7 +30,7 @@ public class WeatherAcceptanceTest {
 
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
-        wireMockRule.stubFor(get(urlPathEqualTo("/"))
+        wireMockRule.stubFor(get(urlPathEqualTo("/data/2.5/weather"))
                 .willReturn(aResponse()
                         .withBody(FileLoader.read("classpath:weatherApiResponse.json"))
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

@@ -19,6 +19,6 @@ public class WeatherClient {
     }
 
     public WeatherResponse yesterdaysWeather() {
-        return restTemplate.getForObject(weatherServiceUrl, WeatherResponse.class);
+        return restTemplate.getForObject(String.format("%s/data/2.5/weather?q=Hamburg,de", weatherServiceUrl), WeatherResponse.class);
     }
 }
