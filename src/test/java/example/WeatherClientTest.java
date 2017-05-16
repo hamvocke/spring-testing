@@ -2,7 +2,10 @@ package example;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import static example.WeatherResponse.weatherResponse;
@@ -11,6 +14,8 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+@RunWith(SpringRunner.class)
+@TestPropertySource(locations= "classpath:application.properties")
 public class WeatherClientTest {
 
     @Mock

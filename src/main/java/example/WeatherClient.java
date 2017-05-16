@@ -19,7 +19,6 @@ public class WeatherClient {
     }
 
     public WeatherResponse yesterdaysWeather() {
-        System.out.println("weatherServiceUrl = " + weatherServiceUrl);
         return restTemplate.getForObject(weatherServiceUrl, WeatherResponse.class);
     }
 }
