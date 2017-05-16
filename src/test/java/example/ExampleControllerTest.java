@@ -6,6 +6,7 @@ import org.mockito.Mock;
 
 import java.util.Optional;
 
+import static example.WeatherResponse.weatherResponse;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.*;
@@ -54,7 +55,8 @@ public class ExampleControllerTest {
 
     @Test
     public void shouldCallWeatherClient() throws Exception {
-        given(weatherClient.yesterdaysWeather()).willReturn("Hamburg, 8°C raining");
+        WeatherResponse weatherResponse = weatherResponse().description("Hamburg, 8°C raining").build();
+        given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse);
 
         String weather = subject.yesterdaysWeather();
 
