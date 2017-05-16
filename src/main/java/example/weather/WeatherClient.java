@@ -10,15 +10,19 @@ public class WeatherClient {
 
     private final RestTemplate restTemplate;
     private final String weatherServiceUrl;
+    private final String weatherServiceApiKey;
 
     @Autowired
     public WeatherClient(final RestTemplate restTemplate,
-                         @Value("${weather.url}") final String weatherServiceUrl) {
+                         @Value("${weather.url}") final String weatherServiceUrl,
+                         @Value("${weather.api_key}") final String weatherServiceApiKey) {
         this.restTemplate = restTemplate;
         this.weatherServiceUrl = weatherServiceUrl;
+        this.weatherServiceApiKey = weatherServiceApiKey;
     }
 
     public WeatherResponse yesterdaysWeather() {
-        return restTemplate.getForObject(String.format("%s/data/2.5/weather?q=Hamburg,de", weatherServiceUrl), WeatherResponse.class);
+        String url = String.format("%s/data/2.5/weather?q=Hamburg,de&appid=%s", weatherServiceUrl, weatherServiceApiKey);
+        return restTemplate.getForObject(url, WeatherResponse.class);
     }
 }

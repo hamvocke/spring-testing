@@ -6,4 +6,8 @@
       <git url="https://github.com/hamvocke/spring-testing.git" />
     </config-repo>
   </config-repos>
+  <pipelines group="example" />
+  <agents>
+    <agent hostname="e16563f957ad" ipaddress="172.18.0.3" uuid="9b74a3f8-17b3-4232-81e5-168e94a2b62b" />
+  </agents>
 </cruise>

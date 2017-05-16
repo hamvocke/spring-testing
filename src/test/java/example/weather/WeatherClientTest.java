@@ -25,13 +25,14 @@ public class WeatherClientTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        subject = new WeatherClient(restTemplate, "http://localhost:8089");
+        subject = new WeatherClient(restTemplate, "http://localhost:8089", "someAppId");
     }
 
     @Test
     public void shouldCallWeatherService() throws Exception {
         WeatherResponse expectedResponse = weatherResponse().description("Hamburg, 8°C raining").build();
-        given(restTemplate.getForObject("http://localhost:8089/data/2.5/weather?q=Hamburg,de", WeatherResponse.class)).willReturn(expectedResponse);
+        given(restTemplate.getForObject("http://localhost:8089/data/2.5/weather?q=Hamburg,de&appid=someAppId", WeatherResponse.class))
+                .willReturn(expectedResponse);
 
         WeatherResponse actualResponse = subject.yesterdaysWeather();
 
