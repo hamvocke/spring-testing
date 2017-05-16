@@ -1,6 +1,8 @@
 package example.weather;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.matching.AnythingPattern;
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import example.helper.FileLoader;
 import org.junit.Rule;
 import org.junit.Test;
@@ -31,6 +33,7 @@ public class WeatherAcceptanceTest {
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
         wireMockRule.stubFor(get(urlPathEqualTo("/data/2.5/weather"))
+                .withQueryParam("appid", new AnythingPattern())
                 .willReturn(aResponse()
                         .withBody(FileLoader.read("classpath:weatherApiResponse.json"))
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
