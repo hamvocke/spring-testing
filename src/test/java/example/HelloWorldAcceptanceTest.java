@@ -1,6 +1,7 @@
 package example;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import example.helper.FileLoader;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

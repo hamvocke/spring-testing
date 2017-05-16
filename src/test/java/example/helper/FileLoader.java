@@ -1,4 +1,4 @@
-package example;
+package example.helper;
 
 import org.springframework.util.ResourceUtils;
 

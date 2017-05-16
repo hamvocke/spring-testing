@@ -1,6 +1,7 @@
 package example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import example.helper.FileLoader;
 import org.junit.Test;
 
 import static example.WeatherResponse.weatherResponse;
