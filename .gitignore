@@ -26,3 +26,4 @@ nbdist/
 out/
 
 gocd/server/ssh/id*
+.env
