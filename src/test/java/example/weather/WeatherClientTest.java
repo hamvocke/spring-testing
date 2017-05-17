@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,7 +30,7 @@ public class WeatherClientTest {
     @Test
     public void shouldCallWeatherService() throws Exception {
         WeatherResponse expectedResponse = weatherResponse().description("Hamburg, 8°C raining").build();
-        given(restTemplate.getForObject("http://localhost:8089/data/2.5/weather?q=Hamburg,de&appid=someAppId", WeatherResponse.class))
+        given(restTemplate.getForObject("http://localhost:8089/data/2.5/history/city?q=Hamburg,de&appid=someAppId", WeatherResponse.class))
                 .willReturn(expectedResponse);
 
         WeatherResponse actualResponse = subject.yesterdaysWeather();

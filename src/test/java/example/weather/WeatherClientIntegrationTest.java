@@ -2,8 +2,6 @@ package example.weather;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import example.helper.FileLoader;
-import example.weather.WeatherClient;
-import example.weather.WeatherResponse;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +27,7 @@ public class WeatherClientIntegrationTest {
 
     @Test
     public void shouldCallWeatherService() throws Exception {
-        wireMockRule.stubFor(get(urlPathEqualTo("/data/2.5/weather"))
+        wireMockRule.stubFor(get(urlPathEqualTo("/data/2.5/history/city"))
                 .willReturn(aResponse()
                         .withBody(FileLoader.read("classpath:weatherApiResponse.json"))
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

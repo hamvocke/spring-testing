@@ -13,7 +13,8 @@ import java.util.Optional;
 import static example.weather.WeatherResponse.weatherResponse;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.anyString;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class ExampleControllerTest {

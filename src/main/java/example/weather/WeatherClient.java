@@ -22,7 +22,7 @@ public class WeatherClient {
     }
 
     public WeatherResponse yesterdaysWeather() {
-        String url = String.format("%s/data/2.5/weather?q=Hamburg,de&appid=%s", weatherServiceUrl, weatherServiceApiKey);
+        String url = String.format("%s/data/2.5/history/city?q=Hamburg,de&appid=%s", weatherServiceUrl, weatherServiceApiKey);
         return restTemplate.getForObject(url, WeatherResponse.class);
     }
 }
