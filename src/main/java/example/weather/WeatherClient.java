@@ -8,6 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class WeatherClient {
 
+    private static final String LATITUDE = "53.5511";
+    private static final String LONGITUDE = "9.9937";
     private final RestTemplate restTemplate;
     private final String weatherServiceUrl;
     private final String weatherServiceApiKey;
@@ -22,7 +24,8 @@ public class WeatherClient {
     }
 
     public WeatherResponse yesterdaysWeather() {
-        String url = String.format("%s/data/2.5/history/city?q=Hamburg,de&appid=%s", weatherServiceUrl, weatherServiceApiKey);
+        String url = String.format("%s/%s/%s,%s", weatherServiceUrl, weatherServiceApiKey, LATITUDE, LONGITUDE);
+        System.out.println("url = " + url);
         return restTemplate.getForObject(url, WeatherResponse.class);
     }
 }

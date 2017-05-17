@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import static example.weather.WeatherResponse.weatherResponse;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
@@ -29,8 +28,8 @@ public class WeatherClientTest {
 
     @Test
     public void shouldCallWeatherService() throws Exception {
-        WeatherResponse expectedResponse = weatherResponse().description("Hamburg, 8°C raining").build();
-        given(restTemplate.getForObject("http://localhost:8089/data/2.5/history/city?q=Hamburg,de&appid=someAppId", WeatherResponse.class))
+        WeatherResponse expectedResponse = new WeatherResponse("light rain");
+        given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
                 .willReturn(expectedResponse);
 
         WeatherResponse actualResponse = subject.yesterdaysWeather();

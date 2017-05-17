@@ -2,34 +2,23 @@ package example.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.util.Collections.singletonList;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
-    private List<Weather> weather;
+    private Currently currently;
 
     public WeatherResponse() {}
 
-    public WeatherResponse(List<Weather> weather) {
-        this.weather = weather;
+    public WeatherResponse(String currentSummary) {
+        this.currently = new Currently(currentSummary);
     }
 
-    public List<Weather> getWeather() {
-        return weather;
+    public Currently getCurrently() {
+        return currently;
     }
 
-    public String getDescription() {
-        return weather.stream()
-                .map(Weather::getDescription)
-                .collect(Collectors.joining(", "));
-    }
-
-    public static WeatherResponseBuilder weatherResponse() {
-        return new WeatherResponseBuilder();
+    public String getSummary() {
+        return currently.getSummary();
     }
 
     @Override
@@ -37,35 +26,35 @@ public class WeatherResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        WeatherResponse that = (WeatherResponse) o;
+        WeatherResponse response = (WeatherResponse) o;
 
-        return weather != null ? weather.equals(that.weather) : that.weather == null;
+        return currently != null ? currently.equals(response.currently) : response.currently == null;
     }
 
     @Override
     public int hashCode() {
-        return weather != null ? weather.hashCode() : 0;
+        return currently != null ? currently.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "WeatherResponse{" +
-                "weather=" + weather +
+                "currently=" + currently +
                 '}';
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Weather {
-        private String description;
+    public static class Currently {
+        private String summary;
 
-        public String getDescription() {
-            return description;
+        public Currently() {}
+
+        public Currently(String summary) {
+            this.summary = summary;
         }
 
-        public Weather() {}
-
-        public Weather(String description) {
-            this.description = description;
+        public String getSummary() {
+            return summary;
         }
 
         @Override
@@ -73,35 +62,21 @@ public class WeatherResponse {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Weather weather = (Weather) o;
+            Currently currently = (Currently) o;
 
-            return description != null ? description.equals(weather.description) : weather.description == null;
+            return summary != null ? summary.equals(currently.summary) : currently.summary == null;
         }
 
         @Override
         public int hashCode() {
-            return description != null ? description.hashCode() : 0;
+            return summary != null ? summary.hashCode() : 0;
         }
 
         @Override
         public String toString() {
-            return "Weather{" +
-                    "description='" + description + '\'' +
+            return "Currently{" +
+                    "summary='" + summary + '\'' +
                     '}';
-        }
-
-    }
-
-    public static class WeatherResponseBuilder {
-        private String description;
-
-        public WeatherResponseBuilder description(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public WeatherResponse build() {
-            return new WeatherResponse(singletonList(new Weather(description)));
         }
     }
 }

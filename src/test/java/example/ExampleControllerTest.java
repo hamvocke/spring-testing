@@ -2,15 +2,14 @@ package example;
 
 import example.person.Person;
 import example.person.PersonRepository;
-import example.weather.WeatherClient;
 import example.weather.WeatherResponse;
+import example.weather.WeatherClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static example.weather.WeatherResponse.weatherResponse;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.anyString;
@@ -60,7 +59,7 @@ public class ExampleControllerTest {
 
     @Test
     public void shouldCallWeatherClient() throws Exception {
-        WeatherResponse weatherResponse = weatherResponse().description("Hamburg, 8°C raining").build();
+        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
         given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse);
 
         String weather = subject.yesterdaysWeather();

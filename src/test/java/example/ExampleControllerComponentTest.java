@@ -2,6 +2,7 @@ package example;
 
 import example.person.Person;
 import example.person.PersonRepository;
+import example.weather.WeatherResponse;
 import example.weather.WeatherClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static example.weather.WeatherResponse.weatherResponse;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -49,7 +49,9 @@ public class ExampleControllerComponentTest {
 
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
-        given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse().description("Hamburg, 8°C raining").build());
+        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
+        given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse);
+
         mockMvc.perform(get("/yesterdaysWeather"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("Hamburg, 8°C raining"));
