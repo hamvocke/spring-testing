@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -35,9 +37,9 @@ public class WeatherClientIntegrationTest {
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .withStatus(200)));
 
-        WeatherResponse weatherResponse = subject.yesterdaysWeather();
+        Optional<WeatherResponse> weatherResponse = subject.fetchWeather();
 
-        WeatherResponse expectedResponse = new WeatherResponse("Rain");
+        Optional<WeatherResponse> expectedResponse = Optional.of(new WeatherResponse("Rain"));
         assertThat(weatherResponse, is(expectedResponse));
     }
 }

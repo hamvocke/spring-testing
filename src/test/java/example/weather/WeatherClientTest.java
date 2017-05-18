@@ -5,7 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -32,9 +35,20 @@ public class WeatherClientTest {
         given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
                 .willReturn(expectedResponse);
 
-        WeatherResponse actualResponse = subject.yesterdaysWeather();
+        Optional<WeatherResponse> actualResponse = subject.fetchWeather();
 
-        assertThat(actualResponse, is(expectedResponse));
+        assertThat(actualResponse, is(Optional.of(expectedResponse)));
+    }
+
+    @Test
+    public void shouldReturnEmptyOptionalIfWeatherServiceIsUnavailable() throws Exception {
+        given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
+                .willThrow(new RestClientException("something went wrong"));
+
+        Optional<WeatherResponse> actualResponse = subject.fetchWeather();
+
+        assertThat(actualResponse, is(Optional.empty()));
+
     }
 
 }

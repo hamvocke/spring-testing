@@ -50,9 +50,9 @@ public class ExampleControllerComponentTest {
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
         WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
-        given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse);
+        given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
-        mockMvc.perform(get("/yesterdaysWeather"))
+        mockMvc.perform(get("/weather"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("Hamburg, 8°C raining"));
     }

@@ -3,6 +3,7 @@ package example;
 import example.person.Person;
 import example.person.PersonRepository;
 import example.weather.WeatherClient;
+import example.weather.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +37,10 @@ public class ExampleController {
                 .orElse(String.format("Who is this '%s' you're talking about?", lastName));
     }
 
-    @GetMapping("/yesterdaysWeather")
-    public String yesterdaysWeather() {
-        return weatherClient.yesterdaysWeather().getSummary();
+    @GetMapping("/weather")
+    public String weather() {
+        return weatherClient.fetchWeather()
+                .map(WeatherResponse::getSummary)
+                .orElse("Sorry, I couldn't fetch the weather for you :(");
     }
 }

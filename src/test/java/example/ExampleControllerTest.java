@@ -58,12 +58,21 @@ public class ExampleControllerTest {
     }
 
     @Test
-    public void shouldCallWeatherClient() throws Exception {
+    public void shouldReturnWeatherClientResult() throws Exception {
         WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
-        given(weatherClient.yesterdaysWeather()).willReturn(weatherResponse);
+        given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
-        String weather = subject.yesterdaysWeather();
+        String weather = subject.weather();
 
         assertThat(weather, is("Hamburg, 8°C raining"));
+    }
+
+    @Test
+    public void shouldReturnErrorMessageIfWeatherClientIsUnavailable() throws Exception {
+        given(weatherClient.fetchWeather()).willReturn(Optional.empty());
+
+        String weather = subject.weather();
+
+        assertThat(weather, is("Sorry, I couldn't fetch the weather for you :("));
     }
 }

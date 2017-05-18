@@ -3,7 +3,10 @@ package example.weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Optional;
 
 @Component
 public class WeatherClient {
@@ -23,9 +26,13 @@ public class WeatherClient {
         this.weatherServiceApiKey = weatherServiceApiKey;
     }
 
-    public WeatherResponse yesterdaysWeather() {
+    public Optional<WeatherResponse> fetchWeather() {
         String url = String.format("%s/%s/%s,%s", weatherServiceUrl, weatherServiceApiKey, LATITUDE, LONGITUDE);
-        System.out.println("url = " + url);
-        return restTemplate.getForObject(url, WeatherResponse.class);
+
+        try {
+            return Optional.ofNullable(restTemplate.getForObject(url, WeatherResponse.class));
+        } catch (RestClientException e) {
+            return Optional.empty();
+        }
     }
 }
