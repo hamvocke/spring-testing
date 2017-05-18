@@ -1,6 +1,4 @@
 pipelines:
-    secure_variables:
-        WEATHER_API_KEY: "mC8mFRtIhv0sVwT4r2SJvuf7m2p+A1nm6gZHsLkrdgLqKfUQkrDkbg=="
     hello-world:
         group: example
         materials:
@@ -8,6 +6,8 @@ pipelines:
                 git: https://github.com/hamvocke/spring-testing.git
         stages:
             - build-and-test:
+                secure_variables:
+                    WEATHER_API_KEY: "mC8mFRtIhv0sVwT4r2SJvuf7m2p+A1nm6gZHsLkrdgLqKfUQkrDkbg=="
                 jobs:
                     build:
                         tasks:
