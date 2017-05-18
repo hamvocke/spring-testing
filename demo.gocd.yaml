@@ -1,4 +1,6 @@
 pipelines:
+    secure_variables:
+        WEATHER_API_KEY: "mC8mFRtIhv0sVwT4r2SJvuf7m2p+A1nm6gZHsLkrdgLqKfUQkrDkbg=="
     hello-world:
         group: example
         materials:
