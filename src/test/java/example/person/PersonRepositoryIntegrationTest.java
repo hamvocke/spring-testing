@@ -25,7 +25,6 @@ public class PersonRepositoryIntegrationTest {
 
         Optional<Person> maybePeter = subject.findByLastName("Pan");
 
-        assertThat(maybePeter.isPresent(), is(true));
-        assertThat(maybePeter.get().getFirstName(), is("Peter"));
+        assertThat(maybePeter, is(Optional.of(peter)));
     }
 }
