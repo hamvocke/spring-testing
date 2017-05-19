@@ -7,7 +7,7 @@ pipelines:
         stages:
             - build-and-test:
                 secure_variables:
-                    WEATHER_API_KEY: "GQmLiJ4GmWIEGr9BzdWZDN4bwi3mNXmAj2qvTEJqxyqP53DiWmlq3g=="
+                    WEATHER_API_KEY: "bRaqcfbCt4E3eRMpJR/STGDBenHord2mj1Mn5+y9SCcJt6T0Qo9PnA=="
                 jobs:
                     build:
                         tasks:
