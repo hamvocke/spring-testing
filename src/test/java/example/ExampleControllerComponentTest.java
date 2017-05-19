@@ -48,7 +48,7 @@ public class ExampleControllerComponentTest {
     }
 
     @Test
-    public void shouldReturnYesterdaysWeather() throws Exception {
+    public void shouldReturnCurrentWeather() throws Exception {
         WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
         given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
