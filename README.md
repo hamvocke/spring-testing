@@ -4,26 +4,27 @@ This repository contains a *Spring Boot* application with lots of exemplary test
 ## Application Architecture
 
 ```
- +--------+      +----------+      +----------+
- |   ☁    |  ←→  |    ☕     |  ←→  |    💾    |
- |  HTTP  |      |  Spring  |      | Database |
- +--------+      |  Service |      +----------+
-                 +----------+
+ ┌────────┐      ┌──────────┐      ┌──────────┐
+ │   ☁    │  ←→  │    ☕     │  ←→  │    💾    │
+ │  HTTP  │      │  Spring  │      │ Database │
+ └────────┘      │  Service │      └──────────┘
+                 └──────────┘
                       ↑
                       ↓
-                 +----------+
-                 |    ☁     |
-                 | Weather  |
-                 |   API    |
-                 +----------+
+                 ┌──────────┐
+                 │    ☁     │
+                 │ Weather  │
+                 │   API    │
+                 └──────────┘
 ```
 
 The sample application is almost as easy as it gets. It stores `Person`s in an in-memory database (using _Spring Data_) and provides a _REST_ interface with three endpoints:
 
-  * _GET_ `/hello`: Returns _"Hello World!"_. Always.
-  * _GET_ `/hello/{lastname}`: Looks up the person with `lastname` as its last name and returns _"Hello {Firstname} {Lastname}"_ if that person is found.
-  * _GET_ `/weather`: Calls a downstream [weather API](https://darksky.net) via HTTP and returns a summary for the current weather conditions in Hamburg, Germany
+  * `GET /hello`: Returns _"Hello World!"_. Always.
+  * `GET /hello/{lastname}`: Looks up the person with `lastname` as its last name and returns _"Hello {Firstname} {Lastname}"_ if that person is found.
+  * `GET /weather`: Calls a downstream [weather API](https://darksky.net) via HTTP and returns a summary for the current weather conditions in Hamburg, Germany
 
+### Internal Architecture
 The **Spring Service** itself has a pretty common internal architecture:
 
   * `Controller` classes provide _REST_ endpoints and deal with _HTTP_ requests and responses
@@ -33,15 +34,24 @@ The **Spring Service** itself has a pretty common internal architecture:
 ## Test Layers
 
 ```
+                 ┌──────────┐
+                 │    ☁     │
+                 │ Weather  │
+                 │   API    │
+                 └──────────┘
+                      ↑
+                      ↓
+ ┌────────┐      ┌──────────┐      ┌──────────┐
+ │   ☁    │  ←→  │    ☕     │  ←→  │    💾    │
+ │  HTTP  │      │  Spring  │      │ Database │
+ └────────┘      │  Service │      └──────────┘
+                 └──────────┘
 
-    ☁      ←→     ☕       ←→      💾
-   HTTP         Spring         Database
-                Service
+  │        HTTP       │      Database        │
+  └─── Integration ───┴──── Integration ─────┘
 
-  |       HTTP      ||    Database     |
-  |__ Integration __||__ Integration __|
-  |                                    |
-  |___________ Acceptance _____________|               
+  │                                          │
+  └────────────── Acceptance ────────────────┘               
 ```
 
 
@@ -56,4 +66,18 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **Wiremock**: provide HTTP stubs for downstream services
 
 ## Get started
-In order to run the service, you need to set the `WEATHER_API_KEY` environment variable. A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application using `source .env`.
+In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksy.net](http://darksky.net).
+
+A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
+
+```bash
+source .env
+```
+
+Once you've provided the API key you can run the application using
+
+```bash
+./gradlew bootRun
+```
+
+The application will start on port `8080` so you can send a sample request to http://localhost:8080/hello to see if you're up and running.
