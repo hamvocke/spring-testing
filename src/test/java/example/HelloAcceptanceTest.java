@@ -2,6 +2,7 @@ package example;
 
 import example.person.Person;
 import example.person.PersonRepository;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class HelloAcceptanceTest {
 
     @LocalServerPort
     private int port;
+
+    @After
+    public void tearDown() throws Exception {
+        personRepository.deleteAll();
+    }
 
     @Test
     public void shouldReturnHelloWorld() throws Exception {
