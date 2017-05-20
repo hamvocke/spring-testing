@@ -86,7 +86,7 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **Wiremock**: provide HTTP stubs for downstream services
 
 ## Get started
-In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksy.net](http://darksky.net).
+In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
 
 A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
 
