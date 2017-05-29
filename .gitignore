@@ -25,5 +25,6 @@ nbdist/
 .nb-gradle/
 out/
 
-gocd/server/ssh/id*
 .env
+gocd/server/ssh/**
+!gocd/server/ssh/put-ssh-keys-here
