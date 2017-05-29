@@ -58,7 +58,8 @@ call the highest layer of their pyramid _E2E_ (End-to-End) test, some prefer to 
 end it doesn't matter which naming convention you pick. The most important thing is that you have this discussion in your
 team and come up with a common understanding of what tests you need and find a naming convention you like.
 
-```   ╱╲
+```
+      ╱╲
   Acceptance
     ╱────╲
    ╱ Inte-╲
