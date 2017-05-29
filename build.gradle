@@ -10,6 +10,15 @@ buildscript {
 	}
 }
 
+ext {
+	drivers = ["firefox", "chrome", "phantomJs"]
+
+	ext {
+		seleniumVersion = '3.4.0'
+		chromeDriverVersion = '2.29'
+	}
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -32,4 +41,5 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.rest-assured:rest-assured:3.0.3')
 	testCompile('com.github.tomakehurst:wiremock:2.6.0')
+	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
 }
