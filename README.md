@@ -33,7 +33,7 @@ The **Spring Service** itself has a pretty common internal architecture:
 
 
   ```
-  Request  ┌─────────────────────────────────────┐
+  Request  ┌────────── Spring Service ───────────┐
    ─────────→ ┌─────────────┐    ┌─────────────┐ │   ┌─────────────┐
    ←───────── │  Controller │ ←→ │  Repository │←──→ │  Database   │
   Response │  └─────────────┘    └─────────────┘ │   └─────────────┘
@@ -52,28 +52,58 @@ The **Spring Service** itself has a pretty common internal architecture:
   ```  
 
 ## Test Layers
+The example applicationn shows different test layers according to the [Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html).
+Typical naming conventions for different layers in the pyramid vary from team to team. Some teams, for example, like to
+call the highest layer of their pyramid _E2E_ (End-to-End) test, some prefer to call them _Functional Tests_. In the
+end it doesn't matter which naming convention you pick. The most important thing is that you have this discussion in your
+team and come up with a common understanding of what tests you need and find a naming convention you like.
+
+```   ╱╲
+  Acceptance
+    ╱────╲
+   ╱ Inte-╲
+  ╱ gration╲
+ ╱──────────╲
+╱   Unit     ╲
+──────────────
+```
+
+The base of the pyramid is the easy part. It's made up of **Unit Tests** which should be the biggest part of your test suite.
+The cool thing about Unit Tests is that they're easy to write and that once you've got the hang of it you can apply them
+everywhere. It doesn't matter if you test a `Conteroller`, a `Repository` a domain class or any other class  in your
+codebase. In a unit test you simply instanciate your _subject under test_ (i.e. the class you're testing), mock or stub
+all dependencies of that class and you're ready to go. As a rule of thumb, Unit Tests should make up **80%** of your test suite.
+
 
 ```
-                ┌──────────┐
-                │    ☁     │
-                │ Weather  │
-                │   API    │
-                └──────────┘
-                     ↑
-                     ↓
  ╭┄┄┄┄┄┄┄╮      ┌──────────┐      ┌──────────┐
  ┆   ☁   ┆  ←→  │    ☕     │  ←→  │    💾    │
  ┆  Web  ┆      │  Spring  │      │ Database │
  ╰┄┄┄┄┄┄┄╯      │  Service │      └──────────┘
                 └──────────┘
 
-  │        HTTP       │      Database        │
+  │    Controller     │      Repository      │
   └─── Integration ───┴──── Integration ─────┘
 
   │                                          │
   └────────────── Acceptance ────────────────┘               
 ```
 
+```
+ ┌─────────┐  ─┐
+ │    ☁    │   │
+ │ Weather │   │
+ │   API   │   │
+ │  Stub   │   │
+ └─────────┘   │ Client
+      ↑        │ Integration
+      ↓        │ Test
+ ┌──────────┐  │
+ │    ☕     │  │
+ │  Spring  │  │
+ │  Service │  │
+ └──────────┘ ─┘
+```
 
 ## Tools
 You can find lots of different tools, frameworks and libraries being used in the different examples:
@@ -82,6 +112,7 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **JUnit**: test runner
   * **Hamcrest Matchers**: assertions
   * **Mockito**: test doubles (mocks, stubs)
+  * **MockMVC**: testing Spring MVC controllers
   * **RestAssured**: testing the service end to end via HTTP
   * **Wiremock**: provide HTTP stubs for downstream services
 
