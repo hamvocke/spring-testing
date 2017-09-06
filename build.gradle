@@ -40,11 +40,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('com.h2database:h2')
 	compile('org.postgresql:postgresql:42.1.1')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('io.rest-assured:rest-assured:3.0.3')
+	testCompile('com.h2database:h2')
+	testCompile('io.rest-assured:rest-assured:3.0.3')
 	testCompile('com.github.tomakehurst:wiremock:2.6.0')
 	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
 }
