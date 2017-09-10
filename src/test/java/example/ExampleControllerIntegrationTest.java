@@ -35,7 +35,8 @@ public class ExampleControllerIntegrationTest {
     @Test
     public void shouldReturnHelloWorld() throws Exception {
         mockMvc.perform(get("/hello"))
-                .andExpect(content().string("Hello World!"));
+                .andExpect(content().string("Hello World!"))
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
@@ -44,7 +45,8 @@ public class ExampleControllerIntegrationTest {
         given(personRepository.findByLastName("Pan")).willReturn(Optional.of(peter));
 
         mockMvc.perform(get("/hello/Pan"))
-                .andExpect(content().string("Hello Peter Pan!"));
+                .andExpect(content().string("Hello Peter Pan!"))
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
