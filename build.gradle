@@ -29,8 +29,8 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
-	compile("org.springframework.boot:spring-boot-starter-web") {
-		exclude module: "spring-boot-starter-tomcat"
+	compile('org.springframework.boot:spring-boot-starter-web') {
+		exclude module: 'spring-boot-starter-tomcat'
 	}
 	compile("org.springframework.boot:spring-boot-starter-jetty")
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -41,5 +41,5 @@ dependencies {
 	testCompile('io.rest-assured:rest-assured:3.0.3')
 	testCompile('com.github.tomakehurst:wiremock:2.6.0')
 	testCompile('org.seleniumhq.selenium:selenium-chrome-driver:3.4.0')
-	testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.5.5")
+	testCompile('au.com.dius:pact-jvm-consumer-junit_2.11:3.5.5')
 }
