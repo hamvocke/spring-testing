@@ -1,6 +1,9 @@
 # Testing Microservices in Spring
 This repository contains a *Spring Boot* application with lots of exemplary tests on different levels of the [Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html). It shows an opinionated way to thoroughly test your spring application by demonstrating different types and levels of testing. You will find that some of the tests are duplicated along the test pyramid -- concepts that have already been tested in lower-level tests will be tested in more high-level tests. This contradicts the premise of the test pyramid. In this case it helps showcasing different kinds of tests which is the main goal of this repository.
 
+## Read the Blog Post
+This repository is part of a [series of blog posts](http://www.hamvocke.com/blog/testing-microservices/) I wrote about testing microservices. I highly recommend you read them to get a better feeling for what it takes to test microservices and how you can implement a reliable test suite for a Spring Boot microservice application.
+
 ## Get started
 
 ### 1. Install Firefox
@@ -76,14 +79,10 @@ The **Spring Service** itself has a pretty common internal architecture:
 
 ## Test Layers
 The example applicationn shows different test layers according to the [Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html).
-Typical naming conventions for different layers in the pyramid vary from team to team. Some teams, for example, like to
-call the highest layer of their pyramid _E2E_ (End-to-End) test, some prefer to call them _Functional Tests_. In the
-end it doesn't matter which naming convention you pick. The most important thing is that you have this discussion in your
-team and come up with a common understanding of what tests you need and find a naming convention you like.
 
 ```
       ╱╲
-  Acceptance
+  End-to-End
     ╱────╲
    ╱ Inte-╲
   ╱ gration╲
@@ -92,12 +91,9 @@ team and come up with a common understanding of what tests you need and find a n
 ──────────────
 ```
 
-The base of the pyramid is the easy part. It's made up of **Unit Tests** which should be the biggest part of your test suite.
-The cool thing about Unit Tests is that they're easy to write and that once you've got the hang of it you can apply them
-everywhere. It doesn't matter if you test a `Conteroller`, a `Repository` a domain class or any other class  in your
-codebase. In a unit test you simply instanciate your _subject under test_ (i.e. the class you're testing), mock or stub
-all dependencies of that class and you're ready to go. As a rule of thumb, Unit Tests should make up **80%** of your test suite.
+The base of the pyramid is made up of unit tests. They should make the biggest part of your automated test suite.
 
+The next layer, integration tests, test all places where your application serializes or deserializes data. Your service's REST API, Repositories or calling third-party services are good examples. This codebase contains example for all of these tests.
 
 ```
  ╭┄┄┄┄┄┄┄╮      ┌──────────┐      ┌──────────┐
