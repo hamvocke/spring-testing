@@ -20,7 +20,6 @@ import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
 public class WeatherClientIntegrationTest {
 
     @Autowired

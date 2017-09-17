@@ -19,7 +19,6 @@ import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(locations = "classpath:application-test.properties")
 public class WeatherAcceptanceTest {
 
     @LocalServerPort

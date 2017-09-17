@@ -23,7 +23,6 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
 public class WeatherClientConsumerTest {
 
     @Autowired
