@@ -1,6 +1,29 @@
 # Testing Microservices in Spring
 This repository contains a *Spring Boot* application with lots of exemplary tests on different levels of the [Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html). It shows an opinionated way to thoroughly test your spring application by demonstrating different types and levels of testing. You will find that some of the tests are duplicated along the test pyramid -- concepts that have already been tested in lower-level tests will be tested in more high-level tests. This contradicts the premise of the test pyramid. In this case it helps showcasing different kinds of tests which is the main goal of this repository.
 
+## Get started
+
+### 1. Install Firefox
+The test suite in this repo features a Selenium-based end-to-end test. This test uses Firefox to navigate to the microservice's web interface. Make sure that Firefox is installed on your system or the end-to-end test will fail.
+
+### 2. Set an API Key as Environment Variable
+In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
+
+A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
+
+```bash
+source .env
+```
+
+Once you've provided the API key you can run the application using
+
+```bash
+./gradlew bootRun
+```
+
+The application will start on port `8080` so you can send a sample request to http://localhost:8080/hello to see if you're up and running.
+
+
 ## Application Architecture
 
 ```
@@ -117,19 +140,3 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **RestAssured**: testing the service end to end via HTTP
   * **Wiremock**: provide HTTP stubs for downstream services
 
-## Get started
-In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
-
-A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
-
-```bash
-source .env
-```
-
-Once you've provided the API key you can run the application using
-
-```bash
-./gradlew bootRun
-```
-
-The application will start on port `8080` so you can send a sample request to http://localhost:8080/hello to see if you're up and running.
