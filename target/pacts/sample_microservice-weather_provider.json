@@ -1,0 +1,133 @@
+{
+    "provider": {
+        "name": "weather_provider"
+    },
+    "consumer": {
+        "name": "sample_microservice"
+    },
+    "interactions": [
+        {
+            "description": "a request for a weather request for Hamburg",
+            "request": {
+                "method": "GET",
+                "path": "/some-test-api-key/53.5511,9.9937"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json; charset=UTF-8"
+                },
+                "body": {
+                    "latitude": 47.20296790272209,
+                    "longitude": -123.41670367098749,
+                    "timezone": "America/Los_Angeles",
+                    "currently": {
+                        "time": 1453402675,
+                        "summary": "Rain",
+                        "icon": "rain",
+                        "nearestStormDistance": 0,
+                        "precipIntensity": 0.1685,
+                        "precipIntensityError": 0.0067,
+                        "precipProbability": 1,
+                        "precipType": "rain",
+                        "temperature": 48.71,
+                        "apparentTemperature": 46.93,
+                        "dewPoint": 47.7,
+                        "humidity": 0.96,
+                        "windSpeed": 4.64,
+                        "windBearing": 186,
+                        "visibility": 4.3,
+                        "cloudCover": 0.73,
+                        "pressure": 1009.7,
+                        "ozone": 328.35
+                    },
+                    "minutely": {
+                        "summary": "Rain for the hour.",
+                        "icon": "rain",
+                        "data": [
+                            {
+                                "time": 1453402620,
+                                "precipIntensity": 0.1715,
+                                "precipIntensityError": 0.0066,
+                                "precipProbability": 1,
+                                "precipType": "rain"
+                            }
+                        ]
+                    },
+                    "hourly": {
+                        "summary": "Rain throughout the day.",
+                        "icon": "rain",
+                        "data": [
+                            {
+                                "time": 1453399200,
+                                "summary": "Rain",
+                                "icon": "rain",
+                                "precipIntensity": 0.1379,
+                                "precipProbability": 0.85,
+                                "precipType": "rain",
+                                "temperature": 48.16,
+                                "apparentTemperature": 46.41,
+                                "dewPoint": 46.89,
+                                "humidity": 0.95,
+                                "windSpeed": 4.47,
+                                "windBearing": 166,
+                                "visibility": 3.56,
+                                "cloudCover": 0.39,
+                                "pressure": 1009.97,
+                                "ozone": 328.71
+                            }
+                        ]
+                    },
+                    "daily": {
+                        "summary": "Light rain throughout the week, with temperatures bottoming out at 48\u00b0F on Sunday.",
+                        "icon": "rain",
+                        "data": [
+                            {
+                                "time": 1453363200,
+                                "summary": "Rain throughout the day.",
+                                "icon": "rain",
+                                "sunriseTime": 1453391560,
+                                "sunsetTime": 1453424361,
+                                "moonPhase": 0.43,
+                                "precipIntensity": 0.1134,
+                                "precipIntensityMax": 0.1722,
+                                "precipIntensityMaxTime": 1453392000,
+                                "precipProbability": 0.87,
+                                "precipType": "rain",
+                                "temperatureMin": 41.42,
+                                "temperatureMinTime": 1453363200,
+                                "temperatureMax": 53.27,
+                                "temperatureMaxTime": 1453417200,
+                                "apparentTemperatureMin": 36.68,
+                                "apparentTemperatureMinTime": 1453363200,
+                                "apparentTemperatureMax": 53.27,
+                                "apparentTemperatureMaxTime": 1453417200,
+                                "dewPoint": 46.79,
+                                "humidity": 0.95,
+                                "windSpeed": 4.26,
+                                "windBearing": 150,
+                                "visibility": 4.02,
+                                "cloudCover": 0.77,
+                                "pressure": 1009.35,
+                                "ozone": 326.69
+                            }
+                        ]
+                    }
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "weather forecast data"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.5"
+        }
+    }
+}

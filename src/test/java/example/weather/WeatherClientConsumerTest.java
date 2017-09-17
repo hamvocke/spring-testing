@@ -32,7 +32,7 @@ public class WeatherClientConsumerTest {
     @Rule
     public PactProviderRuleMk2 weatherProvider = new PactProviderRuleMk2("weather_provider", "localhost", 8089, this);
 
-    @Pact( consumer="test_consumer")
+    @Pact(consumer="sample_microservice")
     public RequestResponsePact createPact(PactDslWithProvider builder) throws IOException {
         return builder
                 .given("weather forecast data")
