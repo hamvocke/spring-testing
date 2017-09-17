@@ -10,14 +10,6 @@ buildscript {
 	}
 }
 
-ext {
-	drivers = ["firefox", "chrome", "phantomJs"]
-
-	ext {
-		chromeDriverVersion = '2.29'
-	}
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'

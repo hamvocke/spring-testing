@@ -18,16 +18,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ExampleE2ETest {
 
-    private WebDriver driver;
+    private WebDriver driver = new ChromeDriver();
 
     @LocalServerPort
     private int port;
-
-    @Before
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
-        driver = new ChromeDriver();
-    }
 
     @After
     public void tearDown(){
