@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ExampleE2ETest {
+public class HelloE2ESeleniumTest {
 
     private WebDriver driver = new FirefoxDriver();
 

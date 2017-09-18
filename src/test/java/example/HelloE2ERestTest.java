@@ -16,7 +16,7 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HelloAcceptanceTest {
+public class HelloE2ERestTest {
 
     @Autowired
     private PersonRepository personRepository;
