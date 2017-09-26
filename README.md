@@ -18,13 +18,16 @@ A simple way is to rename the `env.sample` file to `.env`, fill in your API key 
 source .env
 ```
 
-Once you've provided the API key you can run the application using
+### 3. Start a PostgreSQL database
+
+### 4. Run the Application
+Once you've provided the API key and started a PostgreSQL database you can run the application using
 
 ```bash
 ./gradlew bootRun
 ```
 
-The application will start on port `8080` so you can send a sample request to http://localhost:8080/hello to see if you're up and running.
+The application will start on port `8080` so you can send a sample request to `http://localhost:8080/hello` to see if you're up and running.
 
 
 ## Application Architecture

@@ -20,7 +20,7 @@ public class WeatherClient {
     @Autowired
     public WeatherClient(final RestTemplate restTemplate,
                          @Value("${weather.url}") final String weatherServiceUrl,
-                         @Value("${weather.api_key}") final String weatherServiceApiKey) {
+                         @Value("${weather.api_secret}") final String weatherServiceApiKey) {
         this.restTemplate = restTemplate;
         this.weatherServiceUrl = weatherServiceUrl;
         this.weatherServiceApiKey = weatherServiceApiKey;
