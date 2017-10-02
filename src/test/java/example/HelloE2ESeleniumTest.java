@@ -1,6 +1,9 @@
 package example;
 
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -18,10 +21,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HelloE2ESeleniumTest {
 
-    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
 
     @LocalServerPort
     private int port;
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        ChromeDriverManager.getInstance().setup();
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        driver = new ChromeDriver();
+    }
 
     @After
     public void tearDown(){
