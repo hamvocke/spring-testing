@@ -16,3 +16,7 @@ addons:
 
 script:
 - ./gradlew build --info
+
+cache:
+  directories:
+  - $HOME/.m2
