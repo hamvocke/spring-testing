@@ -6,10 +6,7 @@ This repository is part of a [series of blog posts](http://www.hamvocke.com/blog
 
 ## Get started
 
-### 1. Install Chromium
-The test suite in this repo features a Selenium-based end-to-end test. This test uses Chrome (or Chromium) to navigate to the microservice's web interface. Make sure that Chromium is installed on your system or the end-to-end test will fail.
-
-### 2. Set an API Key as Environment Variable
+### 1. Set an API Key as Environment Variable
 In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
 
 A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
@@ -18,7 +15,7 @@ A simple way is to rename the `env.sample` file to `.env`, fill in your API key 
 source .env
 ```
 
-### 3. Start a PostgreSQL database
+### 2. Start a PostgreSQL database
 The easiest way is to use the provided `startDatabase.sh` script. This script starts a Docker container which contains a database with the following configuration:
     
   * port: `1543`
@@ -28,7 +25,7 @@ The easiest way is to use the provided `startDatabase.sh` script. This script st
   
 If you don't want to use the script make sure to have a database with the same configuration or modify your `application.properties`.
 
-### 4. Run the Application
+### 3. Run the Application
 Once you've provided the API key and started a PostgreSQL database you can run the application using
 
 ```bash
