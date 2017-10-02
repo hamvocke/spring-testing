@@ -13,6 +13,6 @@ before_install:
 
 addons:
   chrome: stable
-  
+
 script:
-- ./gradlew build
+- ./gradlew build --info
