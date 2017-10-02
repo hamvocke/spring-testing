@@ -6,8 +6,8 @@ This repository is part of a [series of blog posts](http://www.hamvocke.com/blog
 
 ## Get started
 
-### 1. Install Firefox
-The test suite in this repo features a Selenium-based end-to-end test. This test uses Firefox to navigate to the microservice's web interface. Make sure that Firefox is installed on your system or the end-to-end test will fail.
+### 1. Install Chromium
+The test suite in this repo features a Selenium-based end-to-end test. This test uses Chrome (or Chromium) to navigate to the microservice's web interface. Make sure that Chromium is installed on your system or the end-to-end test will fail.
 
 ### 2. Set an API Key as Environment Variable
 In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
