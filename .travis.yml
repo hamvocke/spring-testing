@@ -1,0 +1,18 @@
+dist: trusty
+sudo: required
+
+language: java
+
+jdk:
+- openjdk8
+
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
+addons:
+  chrome: stable
+  
+script:
+- ./gradlew build
