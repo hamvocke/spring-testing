@@ -1,0 +1,34 @@
+{
+    "provider": {
+        "name": "person_provider"
+    },
+    "consumer": {
+        "name": "person_consumer"
+    },
+    "interactions": [
+        {
+            "description": "a request for Peter Pan",
+            "request": {
+                "method": "GET",
+                "path": "/hello/Pan"
+            },
+            "response": {
+                "status": 200,
+                "body": "Hello Peter Pan!"
+            },
+            "providerStates": [
+                {
+                    "name": "person data"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.5"
+        }
+    }
+}

@@ -42,5 +42,6 @@ dependencies {
 	testCompile('com.github.tomakehurst:wiremock:2.6.0')
 	testCompile('org.seleniumhq.selenium:selenium-chrome-driver:2.53.1')
 	testCompile('au.com.dius:pact-jvm-consumer-junit_2.11:3.5.5')
+	testCompile('au.com.dius:pact-jvm-provider-spring_2.12:3.5.5')
 	testCompile('io.github.bonigarcia:webdrivermanager:1.7.2')
 }
