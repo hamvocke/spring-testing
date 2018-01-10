@@ -11,7 +11,6 @@ import example.person.PersonRepository;
 import example.weather.WeatherClient;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Optional;
