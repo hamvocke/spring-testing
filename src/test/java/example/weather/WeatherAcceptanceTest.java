@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -26,6 +25,7 @@ public class WeatherAcceptanceTest {
 
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(8089);
+
 
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
