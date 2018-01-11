@@ -18,6 +18,12 @@ import java.util.Optional;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+/**
+ *  A provider test for the contract between this service (as a provider) and
+ *  a primitive consumer. The implementation of the consumer can be
+ *  found under https://github.com/hamvocke/spring-testing-consumer
+ */
+
 @RunWith(RestPactRunner.class)
 @Provider("person_provider")// same as in the "provider_name" part in our pact file
 @PactFolder("target/pacts") // tells pact where to load the pact files from
