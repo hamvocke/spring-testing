@@ -55,9 +55,9 @@ dependencies {
 	testCompile('au.com.dius:pact-jvm-consumer-junit_2.12:3.5.5')
 	testCompile('au.com.dius:pact-jvm-provider-spring_2.12:3.5.5')
 	testCompile('io.github.bonigarcia:webdrivermanager:2.1.0')
-    testCompile('com.intuit.karate:karate-junit4:0.7.0')
-    testCompile('com.intuit.karate:karate-apache:0.7.0')
-    testCompile('com.intuit.karate:karate-apache:0.7.0')
+    testCompile('com.intuit.karate:karate-junit4:0.7.0.1')
+    testCompile('com.intuit.karate:karate-mock-servlet:0.7.0.1')
+    testCompile('com.intuit.karate:karate-netty:0.7.0.1')
     testCompile('ch.qos.logback:logback-classic:1.2.3')
     testCompile('ch.qos.logback:logback-core:1.2.3')
     

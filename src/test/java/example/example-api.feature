@@ -1,7 +1,7 @@
-Feature: e2e rest
+Feature: controller via mock-servlet
 
 Background:
-    * url 'http://localhost:' + karate.properties['karate.server.port']
+    * url baseUrl
 
 Scenario: should return hello world
     Given path 'hello'
@@ -14,3 +14,9 @@ Scenario: should return greeting
     When method get
     Then status 200
     And match response == 'Hello Peter Pan!'
+
+Scenario: should return current weather
+    Given path 'weather'
+    When method get
+    Then status 200
+    And match response == 'Hamburg, 8°C raining'
