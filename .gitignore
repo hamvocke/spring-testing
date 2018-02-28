@@ -1,5 +1,8 @@
+.DS_Store
 .gradle
+karate.log
 /build/
+/target/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###

@@ -39,6 +39,6 @@ public class WeatherAcceptanceTest {
                 .get(String.format("http://localhost:%s/weather", port))
                 .then()
                 .statusCode(is(200))
-                .body(containsString("Rain"));
+                .body(containsString("rain"));
     }
 }
