@@ -1,4 +1,5 @@
-Feature: controller via mock-servlet
+Feature: http api integration test 
+    also re-usable as mock-mvc / servlet test
 
 Background:
     * url baseUrl
