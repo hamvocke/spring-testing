@@ -21,7 +21,7 @@ source .env
 ### 2. Start a PostgreSQL database
 The easiest way is to use the provided `startDatabase.sh` script. This script starts a Docker container which contains a database with the following configuration:
     
-  * port: `1543`
+  * port: `15432`
   * username: `postgres`
   * password: `password`
   * database name: `postgres`
