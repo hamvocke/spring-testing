@@ -1,49 +1,38 @@
-buildscript {
-	ext {
-		springBootVersion = '1.5.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+plugins {
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'idea'
+	id 'eclipse'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-
+group = 'com.hamvocke.spring-testing'
 version = '0.0.1-SNAPSHOT'
-
-jar {
-    baseName = 'spring-testing'
-}
-
-sourceCompatibility = 1.8
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
-	compile('org.springframework.boot:spring-boot-starter-web') {
-		exclude module: 'spring-boot-starter-tomcat'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	compile("org.springframework.boot:spring-boot-starter-jetty")
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.postgresql:postgresql:42.1.1')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('com.h2database:h2')
-	testCompile('io.rest-assured:rest-assured:3.0.3')
-	testCompile('com.github.tomakehurst:wiremock:2.6.0')
-	testCompile('org.seleniumhq.selenium:selenium-chrome-driver:3.141.59')
-	testCompile('org.seleniumhq.selenium:selenium-remote-driver:3.141.59')
-	testCompile('org.seleniumhq.selenium:selenium-api:3.141.59')
-	testCompile('au.com.dius:pact-jvm-consumer-junit_2.12:3.5.5')
-	testCompile('au.com.dius:pact-jvm-provider-spring_2.12:3.5.5')
-	testCompile('io.github.bonigarcia:webdrivermanager:3.3.0')
+	testImplementation('io.rest-assured:rest-assured:3.0.3')
+	testImplementation('com.github.tomakehurst:wiremock:2.25.1')
+	testImplementation('org.seleniumhq.selenium:selenium-chrome-driver:3.141.59')
+	testImplementation('org.seleniumhq.selenium:selenium-remote-driver:3.141.59')
+	testImplementation('org.seleniumhq.selenium:selenium-api:3.141.59')
+	testImplementation('au.com.dius:pact-jvm-consumer-junit:4.0.1')
+	testImplementation('au.com.dius:pact-jvm-provider-spring:4.0.1')
+	testImplementation('io.github.bonigarcia:webdrivermanager:3.7.1')
+}
+
+test {
+	useJUnitPlatform()
 }

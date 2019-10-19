@@ -1,10 +1,10 @@
 package example.weather;
 
-import au.com.dius.pact.consumer.Pact;
-import au.com.dius.pact.consumer.PactProviderRuleMk2;
-import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.model.RequestResponsePact;
+import au.com.dius.pact.consumer.junit.PactProviderRule;
+import au.com.dius.pact.consumer.junit.PactVerification;
+import au.com.dius.pact.core.model.RequestResponsePact;
+import au.com.dius.pact.core.model.annotations.Pact;
 import example.helper.FileLoader;
 import org.apache.http.entity.ContentType;
 import org.junit.Rule;
@@ -28,7 +28,7 @@ public class WeatherClientConsumerTest {
     private WeatherClient weatherClient;
 
     @Rule
-    public PactProviderRuleMk2 weatherProvider = new PactProviderRuleMk2
+    public PactProviderRule weatherProvider = new PactProviderRule
             ("weather_provider", "localhost", 8089, this);
 
     @Pact(consumer="sample_microservice")
