@@ -22,7 +22,7 @@ source .env
 The easiest way is to use the provided `startDatabase.sh` script. This script starts a Docker container which contains a database with the following configuration:
     
   * port: `15432`
-  * username: `postgres`
+  * username: `testuser`
   * password: `password`
   * database name: `postgres`
   
