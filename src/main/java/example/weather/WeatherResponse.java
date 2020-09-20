@@ -2,80 +2,91 @@ package example.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
-    private Currently currently;
+    private List<Weather> weather;
 
     public WeatherResponse() {}
 
-    public WeatherResponse(String currentSummary) {
-        this.currently = new Currently(currentSummary);
-    }
-
-    public Currently getCurrently() {
-        return currently;
+    public WeatherResponse(String main, String description) {
+        this.weather = Collections.singletonList(new Weather(main, description));
     }
 
     public String getSummary() {
-        return currently.getSummary();
+        return weather.stream()
+                .map(w -> w.main + ": " + w.description)
+                .collect(Collectors.joining("\n"));
+    }
+
+    public List<Weather> getWeather() {
+        return weather;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        WeatherResponse response = (WeatherResponse) o;
-
-        return currently != null ? currently.equals(response.currently) : response.currently == null;
+        WeatherResponse that = (WeatherResponse) o;
+        return Objects.equals(weather, that.weather);
     }
 
     @Override
     public int hashCode() {
-        return currently != null ? currently.hashCode() : 0;
+        return Objects.hash(weather);
     }
 
     @Override
     public String toString() {
         return "WeatherResponse{" +
-                "currently=" + currently +
+                "weather=" + weather +
                 '}';
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Currently {
-        private String summary;
+    public static class Weather {
+        private String main;
+        private String description;
 
-        public Currently() {}
+        public Weather() {}
 
-        public Currently(String summary) {
-            this.summary = summary;
+        public Weather(String main, String description) {
+            this.main = main;
+            this.description = description;
         }
 
-        public String getSummary() {
-            return summary;
+        public String getMain() {
+            return main;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
-            Currently currently = (Currently) o;
-
-            return summary != null ? summary.equals(currently.summary) : currently.summary == null;
+            Weather weather = (Weather) o;
+            return Objects.equals(main, weather.main) &&
+                    Objects.equals(description, weather.description);
         }
 
         @Override
         public int hashCode() {
-            return summary != null ? summary.hashCode() : 0;
+            return Objects.hash(main, description);
         }
 
         @Override
         public String toString() {
-            return "Currently{" +
-                    "summary='" + summary + '\'' +
+            return "Weather{" +
+                    "main='" + main + '\'' +
+                    ", description='" + description + '\'' +
                     '}';
         }
     }

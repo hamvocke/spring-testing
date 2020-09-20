@@ -10,8 +10,8 @@ import org.mockito.Mock;
 
 import java.util.Optional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -59,12 +59,12 @@ public class ExampleControllerTest {
 
     @Test
     public void shouldReturnWeatherClientResult() throws Exception {
-        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
+        WeatherResponse weatherResponse = new WeatherResponse("raining", "a light drizzle");
         given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
         String weather = subject.weather();
 
-        assertThat(weather, is("Hamburg, 8°C raining"));
+        assertThat(weather, is("raining: a light drizzle"));
     }
 
     @Test
