@@ -26,7 +26,7 @@ public class WeatherClient {
     }
 
     public Optional<WeatherResponse> fetchWeather() {
-        String url = String.format("%s/data/2.5/weather?q=%s&appid=%s", weatherServiceUrl, CITY, weatherServiceApiKey);
+        var url = String.format("%s/data/2.5/weather?q=%s&appid=%s", weatherServiceUrl, CITY, weatherServiceApiKey);
 
         try {
             return Optional.ofNullable(restTemplate.getForObject(url, WeatherResponse.class));

@@ -49,7 +49,7 @@ public class ExampleProviderTest {
 
     @State("person data") // same as the "given()" part in our consumer test
     public void personData() {
-        Person peterPan = new Person("Peter", "Pan");
+        var peterPan = new Person("Peter", "Pan");
         when(personRepository.findByLastName("Pan")).thenReturn(Optional.of
                 (peterPan));
     }

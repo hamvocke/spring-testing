@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -47,7 +46,7 @@ public class HelloE2ESeleniumTest {
     public void helloPageHasTextHelloWorld() {
         driver.navigate().to(String.format("http://localhost:%s/hello", port));
 
-        WebElement body = driver.findElement(By.tagName("body"));
+        var body = driver.findElement(By.tagName("body"));
 
         assertThat(body.getText(), containsString("Hello World!"));
     }

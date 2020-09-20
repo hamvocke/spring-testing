@@ -40,7 +40,7 @@ public class HelloE2ERestTest {
 
     @Test
     public void shouldReturnGreeting() throws Exception {
-        Person peter = new Person("Peter", "Pan");
+        var peter = new Person("Peter", "Pan");
         personRepository.save(peter);
 
         when()

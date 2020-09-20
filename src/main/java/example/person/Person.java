@@ -38,7 +38,7 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
+        var person = (Person) o;
         return id == person.id &&
                 Objects.equals(firstName, person.firstName) &&
                 Objects.equals(lastName, person.lastName);

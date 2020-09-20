@@ -35,9 +35,9 @@ public class WeatherClientIntegrationTest {
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .withStatus(200)));
 
-        Optional<WeatherResponse> weatherResponse = subject.fetchWeather();
+        var weatherResponse = subject.fetchWeather();
 
-        Optional<WeatherResponse> expectedResponse = Optional.of(new WeatherResponse("raining", "a light drizzle"));
+        var expectedResponse = Optional.of(new WeatherResponse("raining", "a light drizzle"));
         assertThat(weatherResponse, is(expectedResponse));
     }
 }

@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -48,7 +47,7 @@ public class WeatherClientConsumerTest {
     @Test
     @PactVerification("weather_provider")
     public void shouldFetchWeatherInformation() throws Exception {
-        Optional<WeatherResponse> weatherResponse = weatherClient.fetchWeather();
+        var weatherResponse = weatherClient.fetchWeather();
         assertThat(weatherResponse.isPresent(), is(true));
         assertThat(weatherResponse.get().getSummary(), is("raining: a light drizzle"));
     }

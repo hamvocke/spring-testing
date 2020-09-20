@@ -41,7 +41,7 @@ public class ExampleControllerAPITest {
 
     @Test
     public void shouldReturnFullName() throws Exception {
-        Person peter = new Person("Peter", "Pan");
+        var peter = new Person("Peter", "Pan");
         given(personRepository.findByLastName("Pan")).willReturn(Optional.of(peter));
 
         mockMvc.perform(get("/hello/Pan"))
@@ -51,7 +51,7 @@ public class ExampleControllerAPITest {
 
     @Test
     public void shouldReturnCurrentWeather() throws Exception {
-        WeatherResponse weatherResponse = new WeatherResponse("raining", "a light drizzle");
+        var weatherResponse = new WeatherResponse("raining", "a light drizzle");
         given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
         mockMvc.perform(get("/weather"))
