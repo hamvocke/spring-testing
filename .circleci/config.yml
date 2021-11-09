@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  build:
+  build-and-test:
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
       _JAVA_OPTIONS: "-Xmx3g"
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     docker:
-      - image: cimg/openjdk:17.0.0
+      - image: cimg/openjdk:17.0.0-browsers
     steps:
       - checkout
       - restore_cache:
@@ -16,6 +16,16 @@ jobs:
       - run:
           name: Install dependencies
           command: ./gradlew build -x test
+      - run:
+          name: Run tests
+          command:
+            ./gradlew test
+      - run:
+          name: Assemble JAR
+          command:
+            ./gradlew assemble
+      - store_artifacts:
+          path: build/libs
       - save_cache:
           paths:
             - ~/.gradle/wrapper
@@ -28,33 +38,9 @@ jobs:
           root: .
           paths:
             - build
-  test:
-    environment:
-      # Configure the JVM and Gradle to avoid OOM errors
-      _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
-    docker:
-      - image: cimg/openjdk:17.0.0-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: Run tests in parallel
-          command:
-            ./gradlew test
-      - run:
-          name: Assemble JAR
-          command:
-              ./gradlew assemble
-      - store_artifacts:
-          path: build/libs
 
 workflows:
   version: 2
   workflow:
     jobs:
-    - build
-    - test:
-        requires:
-          - build
+    - build-and-test
