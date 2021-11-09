@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:17-alpine
 VOLUME /tmp
 ADD build/libs/spring-testing*.jar app.jar
 ADD .env .env
