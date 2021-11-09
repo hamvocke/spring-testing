@@ -6,7 +6,10 @@ import example.weather.WeatherResponse;
 import example.weather.WeatherClient;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
@@ -14,10 +17,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.MockitoAnnotations.initMocks;
 
+@ExtendWith(MockitoExtension.class)
 public class ExampleControllerTest {
 
+    @InjectMocks
     private ExampleController subject;
 
     @Mock
@@ -29,7 +33,6 @@ public class ExampleControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        initMocks(this);
         subject = new ExampleController(personRepository, weatherClient);
     }
 

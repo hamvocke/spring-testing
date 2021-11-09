@@ -11,12 +11,12 @@ import example.person.PersonRepository;
 import example.weather.WeatherClient;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
  *  A provider test for the contract between this service (as a provider) and
@@ -35,6 +35,7 @@ public class ExampleProviderTest {
     @Mock
     private WeatherClient weatherClient;
 
+    @InjectMocks
     private ExampleController exampleController;
 
     @TestTarget
@@ -42,7 +43,6 @@ public class ExampleProviderTest {
 
     @Before
     public void before() {
-        initMocks(this);
         exampleController = new ExampleController(personRepository, weatherClient);
         target.setControllers(exampleController);
     }

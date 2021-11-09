@@ -3,6 +3,7 @@ package example.weather;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestClientException;
@@ -13,11 +14,11 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(SpringRunner.class)
 public class WeatherClientTest {
 
+    @InjectMocks
     private WeatherClient subject;
 
     @Mock
@@ -25,7 +26,6 @@ public class WeatherClientTest {
 
     @Before
     public void setUp() throws Exception {
-        initMocks(this);
         subject = new WeatherClient(restTemplate, "http://localhost:8089", "someAppId");
     }
 
