@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Run tests
           command:
-            ./gradlew test
+            ./gradlew test -i
       - run:
           name: Save test results
           command: |
