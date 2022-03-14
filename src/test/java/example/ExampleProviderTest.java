@@ -54,10 +54,10 @@ public class ExampleProviderTest {
         context.setTarget(target);
     }
 
-    @State("person data") // same as the "given()" part in our consumer test
+    @State("person data") // same as the "given()" part in our consumer test in https://github.com/hamvocke/spring-testing-consumer
     public void personData() {
         var peterPan = new Person("Peter", "Pan");
-        when(personRepository.findByLastName("Pan")).thenReturn(Optional.of
-                (peterPan));
+        when(personRepository.findByLastName("Pan"))
+                .thenReturn(Optional.of(peterPan));
     }
 }
