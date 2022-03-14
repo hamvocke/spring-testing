@@ -12,7 +12,6 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class PersonRepositoryIntegrationTest {
 
