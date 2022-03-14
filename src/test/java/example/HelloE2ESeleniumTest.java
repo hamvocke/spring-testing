@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -33,9 +35,14 @@ public class HelloE2ESeleniumTest {
 
     @BeforeEach
     public void setUp() throws Exception {
+        // we need to fudge chrome options to make things run smoothly on CircleCI
+        // you might not need those in your environment
         var chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-debugging-port=9222");
         chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+
+        // set this to _false_ if you want to see what's going on in your browser
         chromeOptions.setHeadless(true);
         driver = new ChromeDriver(chromeOptions);
     }
