@@ -3,7 +3,6 @@ package example.weather;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestClientException;
@@ -18,7 +17,6 @@ import static org.mockito.BDDMockito.given;
 @RunWith(SpringRunner.class)
 public class WeatherClientTest {
 
-    @InjectMocks
     private WeatherClient subject;
 
     @Mock

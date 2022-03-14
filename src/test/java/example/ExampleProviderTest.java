@@ -11,8 +11,8 @@ import example.person.PersonRepository;
 import example.weather.WeatherClient;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
@@ -35,7 +35,6 @@ public class ExampleProviderTest {
     @Mock
     private WeatherClient weatherClient;
 
-    @InjectMocks
     private ExampleController exampleController;
 
     @TestTarget
@@ -43,6 +42,7 @@ public class ExampleProviderTest {
 
     @Before
     public void before() {
+        MockitoAnnotations.openMocks(this);
         exampleController = new ExampleController(personRepository, weatherClient);
         target.setControllers(exampleController);
     }
