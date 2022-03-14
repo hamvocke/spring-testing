@@ -26,7 +26,7 @@ dependencies {
 	testImplementation('org.seleniumhq.selenium:selenium-java')
 	testImplementation('au.com.dius.pact.consumer:junit5:4.3.5')
 	testImplementation('au.com.dius.pact.provider:junit5spring:4.3.5')
-	testImplementation('io.github.bonigarcia:webdrivermanager:5.0.3')
+	testImplementation('io.github.bonigarcia:webdrivermanager:5.1.0')
 }
 
 test {

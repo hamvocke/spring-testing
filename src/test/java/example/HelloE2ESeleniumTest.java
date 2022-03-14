@@ -9,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -32,7 +34,10 @@ public class HelloE2ESeleniumTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        driver = new ChromeDriver();
+        var chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--remote-debugging-port=9222");
+        chromeOptions.setHeadless(true);
+        driver = new ChromeDriver(chromeOptions);
     }
 
     @AfterEach
