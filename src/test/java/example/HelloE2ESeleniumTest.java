@@ -35,6 +35,7 @@ public class HelloE2ESeleniumTest {
     public void setUp() throws Exception {
         var chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-debugging-port=9222");
+        chromeOptions.addArguments("--no-sandbox");
         chromeOptions.setHeadless(true);
         driver = new ChromeDriver(chromeOptions);
     }

@@ -14,6 +14,9 @@ jobs:
       - restore_cache:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run:
+          name: Install additional Chromium dependencies
+          command: sudo apt-get update && sudo apt-get install libnss3
+      - run:
           name: Install dependencies
           command: ./gradlew build -x test
       - run:
