@@ -33,13 +33,12 @@ public class HelloE2ESeleniumTest {
         // we need to fudge chrome options to make things run smoothly on CircleCI
         // you might not need those in your environment
         var chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--disable-extensions");
         chromeOptions.addArguments("--whitelisted-ips");
         chromeOptions.addArguments("--remote-debugging-port=9222");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-dev-shm-usage");
-
+        chromeOptions.setHeadless(true);
         driver = new ChromeDriver(chromeOptions);
     }
 
