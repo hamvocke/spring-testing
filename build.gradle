@@ -24,10 +24,8 @@ dependencies {
 	testImplementation('io.rest-assured:rest-assured:4.4.0')
 	testImplementation('com.github.tomakehurst:wiremock-jre8:2.31.0')
 	testImplementation('org.seleniumhq.selenium:selenium-java')
-	testImplementation('au.com.dius:pact-jvm-consumer-junit:4.0.10')
-	testImplementation('au.com.dius:pact-jvm-provider-spring:4.0.10')
-//	testImplementation('au.com.dius:pact-jvm-consumer-junit5:4.0.10')
-//	testImplementation('au.com.dius:pact-jvm-provider-junit5spring:4.0.10')
+	testImplementation('au.com.dius.pact.consumer:junit5:4.3.5')
+	testImplementation('au.com.dius.pact.provider:junit5spring:4.3.5')
 	testImplementation('io.github.bonigarcia:webdrivermanager:5.0.3')
 }
 
