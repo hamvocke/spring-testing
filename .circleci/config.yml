@@ -17,7 +17,7 @@ jobs:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - browser-tools/install-chrome
       - run:
-          name: Install dependencies
+          name: Build
           command: ./gradlew build -x test
       - run:
           name: Run tests
