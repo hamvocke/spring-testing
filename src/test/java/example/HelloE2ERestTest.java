@@ -4,11 +4,9 @@ import example.person.Person;
 import example.person.PersonRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.containsString;

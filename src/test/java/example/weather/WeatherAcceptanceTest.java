@@ -4,7 +4,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import example.helper.FileLoader;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;

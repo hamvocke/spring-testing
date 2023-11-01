@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +31,7 @@ public class HelloE2ESeleniumTest {
     @BeforeEach
     public void setUp() throws Exception {
         var chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(true);
+        chromeOptions.addArguments("--headless=new");
         driver = new ChromeDriver(chromeOptions);
     }
 
