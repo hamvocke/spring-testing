@@ -26,8 +26,8 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:5.3.2'
 	testImplementation 'com.github.tomakehurst:wiremock:3.0.1'
 	testImplementation 'org.seleniumhq.selenium:selenium-java'
-	testImplementation 'au.com.dius.pact.consumer:junit5:4.3.5'
-	testImplementation 'au.com.dius.pact.provider:junit5spring:4.3.5'
+	testImplementation 'au.com.dius.pact.consumer:junit5:4.4.8'
+	testImplementation 'au.com.dius.pact.provider:junit5spring:4.4.8'
 	testImplementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
 }
 
