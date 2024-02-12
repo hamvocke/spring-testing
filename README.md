@@ -57,6 +57,14 @@ The application will start on port `8080` so you can send a sample request to `h
                 └──────────┘
 ```
 
+```mermaid
+graph TB;
+    B["☕ Spring Service"];
+    B <--HTTP--> C["☁ Web"];
+    B <--> D["💾 Database"];
+    B <--JSON/HTTP--> A["☁ Weather API"];
+```
+
 The sample application is almost as easy as it gets. It stores `Person`s in an in-memory database (using _Spring Data_) and provides a _REST_ interface with three endpoints:
 
   * `GET /hello`: Returns _"Hello World!"_. Always.
