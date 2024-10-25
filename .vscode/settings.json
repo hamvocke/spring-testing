@@ -1,0 +1,4 @@
+{
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.compile.nullAnalysis.mode": "automatic"
+}
