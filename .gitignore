@@ -30,3 +30,4 @@ gocd/server/ssh/**
 !gocd/server/ssh/put-ssh-keys-here
 .vagrant/
 ubuntu-xenial-16.04-cloudimg-console.log
+.direnv/
