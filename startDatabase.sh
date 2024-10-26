@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 docker stop demo-postgres
 docker rm demo-postgres
